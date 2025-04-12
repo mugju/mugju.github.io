@@ -1,360 +1,434 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Professional Resume</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
-  <style>
-    :root {
-      --primary-color: #4361ee;
-      --secondary-color: #3a0ca3;
-      --accent-color: #f72585;
-      --text-color: #2b2d42;
-      --light-text: #8d99ae;
-      --bg-color: #f8f9fa;
-    }
-    body {
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      line-height: 1.6;
-    }
-    @supports (font-variation-settings: normal) {
-      body { font-family: 'Inter var', -apple-system, BlinkMacSystemFont, sans-serif; }
-    }
-    .resume-header {
-      background: url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;
-      color: white;
-      padding: 3rem 0;
-      clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-      margin-bottom: 2rem;
-      position: relative;
-    }
-    .resume-header::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(67, 97, 238, 0.85);
-    }
-    .header-content {
-      position: relative;
-      z-index: 1;
-    }
-    .resume-section {
-      background-color: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-      margin-bottom: 2rem;
-      padding: 2rem;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .resume-section:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-    }
-    .section-title {
-      color: var(--primary-color);
-      position: relative;
-      padding-bottom: 0.75rem;
-      margin-bottom: 1.5rem;
-    }
-    .section-title::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 50px;
-      height: 3px;
-      background: var(--accent-color);
-      border-radius: 3px;
-    }
-    .skill-badge {
-      background-color: rgba(67, 97, 238, 0.1);
-      color: var(--primary-color);
-      padding: 0.5rem 1rem;
-      margin-right: 0.5rem;
-      margin-bottom: 0.5rem;
-      border-radius: 20px;
-      font-weight: 500;
-    }
-    .contact-icon {
-      color: var(--primary-color);
-      margin-right: 0.75rem;
-      width: 20px;
-      text-align: center;
-    }
-    .job-title {
-      color: var(--primary-color);
-      font-weight: 600;
-    }
-    .date-text {
-      color: var(--light-text);
-      font-size: 0.9rem;
-    }
-    .progress {
-      height: 8px;
-      border-radius: 4px;
-      margin-bottom: 1rem;
-    }
-    .progress-bar {
-      background-color: var(--primary-color);
-    }
-    .avatar {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      border: 4px solid white;
-      object-fit: cover;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-      margin-right: 2rem;
-    }
-    .social-links a {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.2);
-      color: white;
-      margin: 0 0.5rem;
-      transition: all 0.3s ease;
-    }
-    .social-links a:hover {
-      background: white;
-      color: var(--primary-color);
-      transform: translateY(-3px);
-    }
-    .timeline {
-      position: relative;
-      padding-left: 2rem;
-    }
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 7px;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: rgba(67, 97, 238, 0.2);
-    }
-    .timeline-item {
-      position: relative;
-      padding-bottom: 1.5rem;
-    }
-    .timeline-item::before {
-      content: '';
-      position: absolute;
-      left: -2rem;
-      top: 5px;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: var(--primary-color);
-      border: 2px solid white;
-    }
-    .profile-container {
-      display: flex;
-      align-items: center;
-    }
-    .profile-text {
-      flex: 1;
-    }
-    @media (max-width: 992px) {
-      .container {
-        padding-left: 1rem;
-        padding-right: 1rem;
-      }
-      .profile-container {
-        flex-direction: column;
-        text-align: center;
-      }
-      .avatar {
-        margin-right: 0;
-        margin-bottom: 1.5rem;
-      }
-    }
-    @media (max-width: 768px) {
-      .container {
-        padding-left: 0.5rem;
-        padding-right: 0.5rem;
-      }
-      .resume-section {
-        padding: 1.5rem;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developer Resume</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #108510;
+            --secondary-color: #0a642d;
+            --accent-color: #f72585;
+            --text-color: #2b2d42;
+            --light-text: #8d99ae;
+            --bg-color: #f8f9fa;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+        }
+
+        @supports (font-variation-settings: normal) {
+            body {
+                font-family: 'Inter var', -apple-system, BlinkMacSystemFont, sans-serif;
+            }
+        }
+
+        .resume-header {
+            background: url('https://github-production-user-asset-6210df.s3.amazonaws.com/25499386/433066394-5f5085c8-ba7f-4643-9fc2-fa802c26347a.JPG?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20250412%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250412T174242Z&X-Amz-Expires=300&X-Amz-Signature=48d4774a08befcb5faabbd2e66d4097ba9f8f71b88c0712c0dd72537bcaea5f3&X-Amz-SignedHeaders=host') center/cover no-repeat;
+            color: white;
+            padding: 3rem 0;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .resume-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(84, 182, 66, 0.85);
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .resume-section {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+            padding: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .resume-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title {
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--accent-color);
+            border-radius: 3px;
+        }
+
+        .skill-badge {
+            background-color: rgba(67, 97, 238, 0.1);
+            color: var(--primary-color);
+            padding: 0.5rem 1rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        .contact-icon {
+            color: var(--primary-color);
+            margin-right: 0.75rem;
+            width: 20px;
+            text-align: center;
+        }
+
+        .job-title {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .date-text {
+            color: var(--light-text);
+            font-size: 0.9rem;
+        }
+
+        .progress {
+            height: 8px;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+
+        .progress-bar {
+            background-color: var(--primary-color);
+        }
+
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid white;
+            object-fit: cover;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            margin-right: 2rem;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            margin: 0 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: white;
+            color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 2.1rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: rgba(67, 97, 238, 0.2);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 1.5rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            border: 2px solid white;
+        }
+
+        .profile-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .profile-text {
+            flex: 1;
+        }
+
+        @media (max-width: 992px) {
+            .container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+
+            .profile-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .avatar {
+                margin-right: 0;
+                margin-bottom: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding-left: 0.5rem;
+                padding-right: 0.5rem;
+            }
+
+            .resume-section {
+                padding: 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="resume-header">
+<div class="resume-header">
     <div class="container header-content">
-      <div class="profile-container">
-        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Profile" class="avatar">
-        <div class="profile-text">
-          <h1 class="display-4 fw-bold mb-2">John Doe</h1>
-          <p class="lead mb-4">Senior Web Developer & UI Specialist</p>
-          <div class="social-links d-flex">
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#"><i class="fab fa-github"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-dribbble"></i></a>
-          </div>
+        <div class="profile-container">
+            <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/25499386/433066644-ef005fcc-2747-496b-a979-0cb22f568b6a.jpeg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20250412%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250412T174347Z&X-Amz-Expires=300&X-Amz-Signature=d3467af4e8cc0d06acbe2a9a49ed37d30d52ce681a28d7d36323c54a36467d84&X-Amz-SignedHeaders=host"
+                 alt="Profile" class="avatar">
+            <div class="profile-text">
+                <h1 class="display-4 fw-bold mb-2">김동혁</h1>
+                <p class="lead mb-4">Backend Developer</p>
+                <div class="social-links d-flex">
+                    <a href="https://www.linkedin.com/in/%EB%8F%99%ED%98%81-%EA%B9%80-3ba312243/"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/mugju"><i class="fab fa-github"></i></a>
+                    <a href="https://nan-sso-gong.tistory.com/"><i class="fab fa-blogger"></i></a>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
+</div>
 
-  <div class="container py-4">
+<div class="container py-4">
     <div class="row">
-      <div class="col-lg-4">
-        <div class="resume-section">
-          <h3 class="section-title">About Me</h3>
-          <p class="mb-4">Innovative web developer with 8+ years experience creating digital products. Passionate about design systems, performance optimization, and mentoring teams.</p>
-          
-          <h3 class="section-title mt-4">Contact</h3>
-          <p class="mb-3"><i class="fas fa-envelope contact-icon"></i> john.doe@example.com</p>
-          <p class="mb-3"><i class="fas fa-phone contact-icon"></i> (123) 456-7890</p>
-          <p class="mb-3"><i class="fas fa-map-marker-alt contact-icon"></i> San Francisco, CA</p>
-        </div>
+        <div class="col-lg-4">
+            <div class="resume-section">
+                <h3 class="section-title">About Me</h3>
+                <p class="mb-4">즐거운 일에 몰두하고, 제가 속한 팀이 더 나은방향으로 갈 수 있도록 고민합니다.</p>
 
-        <div class="resume-section">
-          <h3 class="section-title">Skills</h3>
-          <div class="mb-3">
-            <h5 class="mb-2">Frontend</h5>
-            <div class="d-flex flex-wrap">
-              <span class="badge skill-badge">React</span>
-              <span class="badge skill-badge">Vue.js</span>
-              <span class="badge skill-badge">TypeScript</span>
-              <span class="badge skill-badge">Tailwind</span>
-              <span class="badge skill-badge">Bootstrap</span>
-            </div>
-          </div>
-          <div class="mb-3">
-            <h5 class="mb-2">Backend</h5>
-            <div class="d-flex flex-wrap">
-              <span class="badge skill-badge">Node.js</span>
-              <span class="badge skill-badge">Express</span>
-              <span class="badge skill-badge">MongoDB</span>
-              <span class="badge skill-badge">PostgreSQL</span>
-            </div>
-          </div>
-          <div>
-            <h5 class="mb-2">Tools</h5>
-            <div class="d-flex flex-wrap">
-              <span class="badge skill-badge">Git</span>
-              <span class="badge skill-badge">Docker</span>
-              <span class="badge skill-badge">Figma</span>
-              <span class="badge skill-badge">Jira</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="resume-section">
-          <h3 class="section-title">Languages</h3>
-          <div class="mb-3">
-            <div class="d-flex justify-content-between mb-1">
-              <span>English</span>
-              <span>Fluent</span>
-            </div>
-            <div class="progress">
-              <div class="progress-bar" style="width: 100%"></div>
-            </div>
-          </div>
-          <div class="mb-3">
-            <div class="d-flex justify-content-between mb-1">
-              <span>Spanish</span>
-              <span>Intermediate</span>
-            </div>
-            <div class="progress">
-              <div class="progress-bar" style="width: 70%"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-8">
-        <div class="resume-section">
-          <h3 class="section-title">Experience</h3>
-          <div class="timeline">
-            <div class="timeline-item mb-4">
-              <h4 class="job-title">Lead Frontend Developer</h4>
-              <p class="mb-1 fw-bold">Tech Innovations Inc.</p>
-              <p class="date-text mb-3">2020 - Present</p>
-              <ul>
-                <li>Lead a team of 8 developers in building a design system used by 50+ products</li>
-                <li>Reduced bundle size by 40% through code splitting and optimization</li>
-                <li>Implemented CI/CD pipeline reducing deployment time from 30min to 5min</li>
-              </ul>
+                <h3 class="section-title mt-4">Contact</h3>
+                <p class="mb-3"><i class="fas fa-envelope contact-icon"></i> ddaa1155k@gmail.com</p>
             </div>
 
-            <div class="timeline-item mb-4">
-              <h4 class="job-title">Senior Web Developer</h4>
-              <p class="mb-1 fw-bold">Digital Solutions</p>
-              <p class="date-text mb-3">2017 - 2020</p>
-              <ul>
-                <li>Architected and built 3 major web applications with React and Node.js</li>
-                <li>Improved Lighthouse scores from 60 to 95+ through performance optimization</li>
-                <li>Mentored 3 junior developers who were promoted within 2 years</li>
-              </ul>
-            </div>
-
-            <div class="timeline-item">
-              <h4 class="job-title">Web Developer</h4>
-              <p class="mb-1 fw-bold">Creative Agency</p>
-              <p class="date-text mb-3">2014 - 2017</p>
-              <ul>
-                <li>Developed 50+ responsive websites for clients across various industries</li>
-                <li>Created reusable component library saving 30% development time</li>
-                <li>Implemented accessibility standards achieving WCAG 2.1 AA compliance</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="resume-section">
-          <h3 class="section-title">Education</h3>
-          <div class="timeline">
-            <div class="timeline-item">
-              <h4 class="job-title">M.S. Computer Science</h4>
-              <p class="mb-1 fw-bold">Stanford University</p>
-              <p class="date-text mb-3">2012 - 2014</p>
-              <p>Specialized in Human-Computer Interaction and Web Technologies</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="resume-section">
-          <h3 class="section-title">Projects</h3>
-          <div class="row">
-            <div class="col-md-6 mb-3">
-              <div class="card border-0 h-100">
-                <div class="card-body">
-                  <h5 class="card-title">Design System</h5>
-                  <p class="card-text">Created a comprehensive design system with React components, documentation, and Figma library.</p>
-                  <a href="#" class="btn btn-sm btn-outline-primary">View Project</a>
+            <div class="resume-section">
+                <h3 class="section-title">Skills</h3>
+                <div class="mb-3">
+                    <h5 class="mb-2">Backend</h5>
+                    <div class="d-flex flex-wrap">
+                        <span class="badge skill-badge">Java</span>
+                        <span class="badge skill-badge">Spring</span>
+                        <span class="badge skill-badge">JPA</span>
+                        <span class="badge skill-badge">SQL</span>
+                        <span class="badge skill-badge">Python</span>
+                        <span class="badge skill-badge">Flask</span>
+                    </div>
                 </div>
-              </div>
-            </div>
-            <div class="col-md-6 mb-3">
-              <div class="card border-0 h-100">
-                <div class="card-body">
-                  <h5 class="card-title">E-commerce Platform</h5>
-                  <p class="card-text">Built a performant e-commerce solution handling 50k+ monthly users with 99.9% uptime.</p>
-                  <a href="#" class="btn btn-sm btn-outline-primary">View Project</a>
+                <div>
+                    <h5 class="mb-2">DevOps</h5>
+                    <div class="d-flex flex-wrap">
+                        <span class="badge skill-badge">Git</span>
+                        <span class="badge skill-badge">Jira</span>
+                        <span class="badge skill-badge">Confluence</span>
+                        <span class="badge skill-badge">Jenkins</span>
+                    </div>
                 </div>
-              </div>
+                <div>
+                    <h5 class="mb-2">Infra</h5>
+                    <div class="d-flex flex-wrap">
+                        <span class="badge skill-badge">AWS</span>
+                        <span class="badge skill-badge">Naver Ncloud</span>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
+
+        <div class="col-lg-8">
+            <div class="resume-section">
+                <h3 class="section-title">Experience</h3>
+                <div class="timeline">
+                    <div class="timeline-item mb-4">
+                        <h4 class="job-title">Backend Developer, Research Engineer</h4>
+                        <p class="mb-1 fw-bold">C&amp;R Research</p>
+                        <p class="date-text mb-3">2022.03 - 현재</p>
+                        <ul>
+                            <li>임상시험 분야에서 연구원이자 백엔드 개발자로 CDISC Standard에 맞춰 병원 수집 데이터의 원형을 설계하고,</li>
+                            수집된 데이터를 처리하여 규제기관에 제출하는 플랫폼 개발.
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="resume-section">
+                <h3 class="section-title">Projects <small class="text-muted fs-5">(order by datetime desc)</small> </h3>
+                <div class="d-flex flex-column">
+                    <div class="mb-3">
+                        <div class="card border-0 h-100">
+                            <div class="">
+                                <h5 class="card-title">Imtrial 2.0 개발</h5>
+                                <ul class="card-text">
+                                    <li>
+                                        <strong>기술 스택:</strong> JAVA, Spring, Python, Flask
+                                    </li>
+                                    <li>
+                                        <strong>기간:</strong> 2025.01 ~
+                                    </li>
+                                    <p></p>
+                                    <li>기존 개발했던 imtrial 의 기능을 더욱 확장시키고자 기존 도메인의 구조변경을 제안하고, 외부 플랫폼과의 연계를 늘리는 역할 진행.</li>
+                                    <li>외부 플랫폼과의 연계와 데이터 처리의 효율성을 위해 Python 기반의 Data-converter 구현</li>
+
+
+                                    <button class="btn btn-sm btn-outline-success " type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#imtrialDetails" aria-expanded="false"
+                                        aria-controls="imtrialDetails">
+                                    상세 내용
+                                </button>
+                                <div class="collapse mt-2" id="imtrialDetails">
+                                    <ul>
+                                        <li>
+                                            CDISC Standard의 버전 update에 따라 도메인 구조 변경 (ODM 1.3.2 -> 2.0)
+                                        </li>
+                                        <li>
+                                            속도 측면에서 저하를 일으키는 Envers Audit 구조 수정 제안. (반영 되었으며, eCRF 생성속도 40% 상승)
+                                        </li>
+                                        <li>
+                                            외국계 EDC 서비스와 접촉하여 플랫폼 연계 작업 (GitHub, mail, developer Center)
+                                        </li>
+                                        <li>
+                                            연계된 내용을 바탕으로 사내에서 외부 플랫폼과의 데이터 연계과정에서 생기는 데이터 차이점 문서를 Excel, Xml 문서로 보여주는등 사용자 편의 기능 구현
+                                        </li>
+                                        <li>
+                                            Code Review 문화를 제안하고, 현재 도입하여 진행중.
+                                        </li>
+                                    </ul>
+                                </div>
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="card border-0 h-200 my-5">
+                            <div class="">
+                                <h5 class="card-title">Imtrial - 0000(서울소재 대학병원) 연계 CDISC 데이터 제출 플랫폼 개발</h5>
+                                <ul class="card-text">
+                                    <li>
+                                        <strong>기술 스택:</strong> Java, Spring, JPA, MySQL, Ncloud, Keycloak
+                                    </li>
+                                    <li>
+                                        <strong>기간:</strong> 2023.01 ~ 2024.12 (약 24개월)
+                                    </li>
+                                    <p></p>
+                                    <li>초기 플랫폼 설계와 MDR(Metadata Repository)의 도메인을 CDISC 기반 확장 가능 구조로 구현.</li>
+                                    <li> 이후 실제 데이터 수집 포맷을 만드는 TDLM (Trial Data Lifecycle Management) 개발 전반에 참여.</li>
+
+
+                                    <button class="btn btn-sm btn-outline-success" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#imtrialDetails1" aria-expanded="false"
+                                        aria-controls="imtrialDetails">
+                                    상세 내용
+                                </button>
+                                <div class="collapse mt-2" id="imtrialDetails1">
+                                    <ul>
+                                        <li>
+                                            Spring Data Envers 를 통한 Audit Log 기능 구현
+                                        </li>
+                                        <li>
+                                            Spring Event 를 사용한 자동 업데이트 체인 구현 및 Transactional Templete 을 사용한 다중 트랜잭션 간 데이터 처리 구현
+                                        </li>
+                                        <li>
+                                            타 서비스와의 연동 서비스 구현 (자사의 Study 데이터 구조를 변형하여 누락없이 전달하는 기능)
+                                        </li>
+                                        <li>
+                                            SSO 오픈소스 KeyCloak 의 사내 사용 문서 작성 및 공유
+                                        </li>
+                                        <li>
+                                            ThymeLeaf 를 통한 증례기록지(CRF), Amendment Table 템플릿 작성
+                                        </li>
+                                    </ul>
+                                </div>
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="card border-0 h-100">
+                            <div class="">
+                                <h5 class="card-title">imtrial 1.0 개발 / 유지보수</h5>
+                                <ul class="card-text">
+                                    <li>
+                                        <strong>기간:</strong> 2022.03 ~ 2022.12 (약 10개월, onboarding 포함)
+                                    </li>
+                                    <p></p>
+                                    <li>Node.js 기반 백엔드 유지보수. </li>
+                                    <li>데이터를 Standard 인 ODM 모듈에 맞추기 위해 Python 모듈 개발</li>
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="resume-section">
+                <h3 class="section-title">Education</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h4 class="job-title">컴퓨터 공학부 / 소프트웨어 전공</h4>
+                        <p class="mb-1 fw-bold">한국산업기술대학교 (현: 한국공학대학교)</p>
+                        <p class="date-text mb-3">2016 - 2022</p>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
     </div>
-  </div>
+</div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
